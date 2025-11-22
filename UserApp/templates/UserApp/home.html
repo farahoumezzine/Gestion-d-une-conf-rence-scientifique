@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Système de Conférence</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .container { max-width: 800px; margin: auto; }
+        .nav-links a { margin-right: 15px; text-decoration: none; color: #007bff; }
+        .nav-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue au Système de Gestion de Conférence! 🎓</h1>
+        
+        <p>Ce système vous permet de gérer tous les aspects des événements académiques : de l'inscription des participants et organisateurs à la soumission et à la planification des sessions.</p>
+
+        <hr>
+
+        <h2>Navigation Rapide</h2>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <p>Bienvenue, **{{ user.get_full_name|default:user.username }}**!</p>
+                <a href="#">Voir les Conférences</a> |
+                <a href="#">Nouvelle Soumission</a> |
+                <a href="#">Déconnexion</a>
+            {% else %}
+                <a href="{% url 'register' %}">S'inscrire comme Participant</a> |
+                <a href="#">Se Connecter</a> |
+                <a href="/admin">Accès Administration</a>
+            {% endif %}
+        </div>
+        
+        <hr>
+
+        <h3>Objectifs du Système</h3>
+        <ul>
+            <li>Gestion des rôles (Participant, Organisateur, Comité Scientifique).</li>
+            <li>Soumission et évaluation des articles.</li>
+            <li>Planification détaillée des sessions et des salles.</li>
+        </ul>
+    </div>
+</body>
+</html>
